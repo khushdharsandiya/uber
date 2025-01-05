@@ -1,31 +1,87 @@
-## Backend API Documentation
+# Backend API Documentation
 
-## `/users/register` Endpoint
+## Endpoint: `/users/register`
 
-### Description
+### Method: POST
 
-Registers a new user by creating a user account with the provided information.
+### Description:
+This endpoint is used to register a new user. It validates the input data and creates a new user in the database if the data is valid.
 
-### HTTP Method
+### Request Body:
+The request body should be a JSON object with the following properties:
 
-POST
+- `fullname`: An object containing:
+  - `firstname`: A string with a minimum length of 3 characters.
+  - `lastname`: A string with a minimum length of 3 characters.
+- `email`: A string that must be a valid email address.
+- `password`: A string with a minimum length of 6 characters.
 
-### Request Body
+Example:
+```json
+{
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+```
 
-The request body should be in JSON format and include the following fields:
+### Responses:
 
--`fullname` (object):
-  -`firstname` (string, required): User's first name (minimum 3 characters).
-  -`lastname` (string, optional): User's last name (minimum 3 characters).
--`email` (string, required): User's email address (must be a valid email).
--`password` (string, required): User's password (minimum 6 characters).
+#### Success:
+- **Status Code:** 201 Created
+- **Response Body:**
+  ```json
+  {
+    "token": "jwt_token_here",
+    "user": {
+      "_id": "user_id_here",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "john.doe@example.com"
+    }
+  }
+  ```
 
-## Example Response
+#### Validation Errors:
+- **Status Code:** 400 Bad Request
+- **Response Body:**
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid Email",
+        "param": "email",
+        "location": "body"
+      },
+      {
+        "msg": "Firstname must be at least 3 characters long",
+        "param": "fullname.firstname",
+        "location": "body"
+      },
+      {
+        "msg": "Password must be at least 6 characters long",
+        "param": "password",
+        "location": "body"
+      }
+    ]
+  }
+  ```
 
--`user` (object):
- -`fullname` (object).
-  -`firstname` (string): User's first name (minimum 3 characters).
-  -`lastname` (string): User's last name (minimum 3 characters).
--`email` (string): User's email address (must be a valid email).
--`password` (string): User's password (minimum 6 characters).
--`token` (String): JWT Token
+#### User Already Exists:
+- **Status Code:** 400 Bad Request
+- **Response Body:**
+  ```json
+  {
+    "message": "User already exist"
+  }
+  ```
+
+### Notes:
+- Ensure that the `Content-Type` header is set to `application/json` when making requests to this endpoint.
+
+
