@@ -83,15 +83,3 @@ Example:
 
 ### Notes:
 - Ensure that the `Content-Type` header is set to `application/json` when making requests to this endpoint.
-
-
-<<<<<<< HEAD
-=======
--`user` (object):
- -`fullname` (object).
-  -`firstname` (string): User's first name (minimum 3 characters).
-  -`lastname` (string): User's last name (minimum 3 characters).
--`email` (string): User's email address (must be a valid email).
--`password` (string): User's password (minimum 6 characters).
--`token` (String): JWT Token
->>>>>>> 7d73cd6da2cde5b0b23da92f3fd1d7bf884e4a5a
