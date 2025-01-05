@@ -16,6 +16,11 @@ The request body should be a JSON object with the following properties:
 - `email`: A string that must be a valid email address.
 - `password`: A string with a minimum length of 6 characters.
 
+
+
+
+
+<!-- 
 Example:
 ```json
 {
@@ -82,4 +87,15 @@ Example:
   ```
 
 ### Notes:
-- Ensure that the `Content-Type` header is set to `application/json` when making requests to this endpoint.
+- Ensure that the `Content-Type` header is set to `application/json` when making requests to this endpoint. -->
+
+
+
+## Example Response
+
+
+- `fullname`: An object containing:
+  - `firstname`: A string with a minimum length of 3 characters.
+  - `lastname`: A string with a minimum length of 3 characters.
+- `email`: A string that must be a valid email address.
+- `password`: A string with a minimum length of 6 characters.
