@@ -16,6 +16,6 @@ app.get("/", (req, res) => {
     res.send("Hello khush")
 })
 
-app.use('./users', userRoutes)
+app.use('/users', userRoutes)
 
 module.exports = app
