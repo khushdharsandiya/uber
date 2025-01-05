@@ -10,25 +10,23 @@ Registers a new user by creating a user account with the provide information.
 
 `POST`
 
-### Endpoint
-
-`users/register`
 
 ### Request Body:
 The request body should be a JSON format and include the following fields:
 
-- `fullname`: An object containing:
-  - `firstname`: A string with a minimum length of 3 characters.
-  - `lastname`: A string with a minimum length of 3 characters.
-- `email`: A string that must be a valid email address.
-- `password`: A string with a minimum length of 6 characters.
-
+- `fullname` (object):
+  - `firstname` (string, required): User's first name (minimum 3 characters).
+  - `lastname` (string, optional): User's last name (minimum 3 characters).
+- `email` (string, required): User's email address (must be a valid email).
+- `password` (string, required): User's password (minimum 6 characters).
 
 ## Example Response
 
 
-- `fullname`: An object containing:
-  - `firstname`: A string with a minimum length of 3 characters.
-  - `lastname`: A string with a minimum length of 3 characters.
-- `email`: A string that must be a valid email address.
-- `password`: A string with a minimum length of 6 characters.
+- `user` (object).
+  - `fullname` (object).
+    -`firstname`(string): User's first name (minimum 3 characters).
+    - `lastname` (string): User's last name (minimum 3 characters).
+  - `email`(string): User's email address (must be a valid email).
+  - `password`(string): User's password (minimum 6 characters).
+-`token` (String): JWT Token 
