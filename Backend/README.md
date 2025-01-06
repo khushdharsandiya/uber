@@ -1,6 +1,3 @@
-land ghalu thanda pan
-
-
 
 # Backend API Documentation
 
