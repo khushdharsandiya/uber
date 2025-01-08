@@ -92,42 +92,4 @@ Logout the current user and blacklist the token provided in cookie headers.
 ### Authentication:
 Requires a valid JWT token in Authorization header or cookie.
 
-# Captain Routes Documentation
-
-## `/captain/register` Endpoint
-
-### Description:
-Register a new captain account with vehicle details and license information.
-
-### HTTP Method
-`POST`
-
-### Request Body:
-The request body should be in JSON format and include the following fields:
-
-- `user` (object).
-  - `fullname` (object).
-    - `firstname` (string): User's first name.
-    - `lastname` (string): User's last name.
-  - `email` (string): User's email address.
-- `token` (string): JWT Token
-
-
-
-
-### Example Response:
-
-- `user` (object).
-  - `fullname` (object).
-     -`firstname`(string): User's first name 
-     - `lastname` (string): User's last name 
-  - `email`(string): User's email address   
-  - `password`(string): User's password     
-  - `vahicle`(object)
-    - `color`(string) vehicle color
-    - `capacity` (number) vehicle capacity
-    - `vahicleType` (string) vehicle type
-    - `plate` (string) vehicle plate number
-- `token` (String): JWT Token
-
 
