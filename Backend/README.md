@@ -1,92 +1,71 @@
-# User Registration API Documentation
+# Captain Routes Documentation
 
-## Register User
-Registers a new user in the system.
+## `/captain/register` Endpoint
 
-### Endpoint
-```
-POST /users/register
-```
+### Description:
+Register a new captain account with vehicle details and license information.
 
-### Request Body
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| email | string | Yes | User's email address |
-| fullname.firstname | string | Yes | User's first name (min 3 characters) |
-| fullname.lastname | string | No | User's last name (min 3 characters if provided) |
-| password | string | Yes | User's password (min 6 characters) |
+### HTTP Method
+`POST`
 
-### Example Request
+### Request Body:
+The request body should be in JSON format and include the following fields:
+
+-`fullname` (object):
+   -`firstname` (string, required): Captain's first name (minimum 3 characters)
+   -`lastname` (string, optional): Captain's last name
+-`email` (string, required): Captain's email address (must be a valid email)
+-`password` (string, required): Captain's password (minimum 6 characters)
+-`vehicle` (object):
+   -`color` (string, required): Vehicle color (minimum 3 characters)
+   -`plate` (string, required): Vehicle plate number (minimum 3 characters)
+   -`capacity` (number, required): Vehicle passenger capacity (minimum 1)
+   -`vehicleType` (string, required): Type of vehicle (must be 'car', 'motorcycle', or 'auto')
+
+### Example Response:
+
+- `user` (object).
+  - `fullname` (object).
+    -`firstname`(string): User's first name 
+    - `lastname` (string): User's last name 
+  - `email`(string): User's email address   
+  - `password`(string): User's password     
+  - `vahicle`(object)
+    - `color`(string) vehicle color
+    - `capacity` (number) vehicle capacity
+    - `vahicleType` (string) vehicle type
+    - `plate` (string) vehicle plate number
+- `token` (String): JWT Token
+
+## `/captain/login` Endpoint
+
+### Description:
+Authenticate a captain and get access token.
+
+### HTTP Method
+`POST`
+
+### Request Body:
 ```json
 {
-  "email": "john.doe@example.com",
-  "fullname": {
-    "firstname": "John",
-    "lastname": "Doe"
-  },
-  "password": "securepassword123"
+  "email": "john.captain@example.com",
+  "password": "password123"
 }
 ```
 
-### Responses
-
-#### Success Response
-- **Status**: 201 Created
+### Response:
+- **Success (200 OK)**
 ```json
 {
   "token": "jwt_token_here",
-  "user": {
-    "_id": "user_id",
-    "email": "john.doe@example.com",
+  "captain": {
+    "_id": "captain_id",
     "fullname": {
       "firstname": "John",
       "lastname": "Doe"
-    }
-  }
-}
-```
-
-#### Error Responses
-
-##### Validation Error
-- **Status**: 400 Bad Request
-```json
-{
-  "errors": [
-    {
-      "msg": "Invalid Email",
-      "param": "email",
-      "location": "body"
-    }
-  ]
-}
-```
-
-##### User Already Exists
-- **Status**: 400 Bad Request
-```json
-{
-  "message": "User already exist"
-}
-```
-
-### Validation Rules
-- Email must be a valid email address
-- First name must be at least 3 characters long
-- Password must be at least 6 characters long
-- Last name, if provided, must be at least 3 characters long
-
-### Example Response
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "user": {
-    "_id": "60d0fe4f5311236168a109ca",
-    "email": "john.doe@example.com",
-    "fullname": {
-      "firstname": "John",
-      "lastname": "Doe"
-    }
+    },
+    "email": "john.captain@example.com",
+    "status": "offline"
   }
 }
 ```
