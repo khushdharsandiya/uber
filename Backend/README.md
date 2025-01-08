@@ -119,8 +119,8 @@ The request body should be in JSON format and include the following fields:
 
 - `user` (object).
   - `fullname` (object).
-    -`firstname`(string): User's first name 
-    - `lastname` (string): User's last name 
+     -`firstname`(string): User's first name 
+     - `lastname` (string): User's last name 
   - `email`(string): User's email address   
   - `password`(string): User's password     
   - `vahicle`(object)
