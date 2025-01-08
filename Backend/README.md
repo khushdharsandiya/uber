@@ -176,20 +176,7 @@ Update captain's online/offline status.
 Requires JWT token in Authorization header or cookie.
 
 ### Request Body:
-```json
-{
-  "status": "online" // or "offline"
-}
-```
 
-### Response:
-- **Success (200 OK)**
-```json
-{
-  "message": "Status updated successfully",
-  "status": "online"
-}
-```
 
 ## `/captain/profile` Endpoint
 
@@ -203,28 +190,6 @@ Get captain's profile information.
 Requires JWT token in Authorization header or cookie.
 
 ### Response:
-- **Success (200 OK)**
-```json
-{
-  "_id": "captain_id",
-  "fullname": {
-    "firstname": "John",
-    "lastname": "Doe"
-  },
-  "email": "john.captain@example.com",
-  "vehicle": {
-    "model": "Toyota Camry",
-    "plateNumber": "ABC-123",
-    "year": "2020",
-    "color": "Black"
-  },
-  "licenseNumber": "DL12345678",
-  "status": "online",
-  "rating": 4.5
-}
-
-
-
-
+  
 
 
